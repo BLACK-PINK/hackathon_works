@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+:root {
+  /* ── Primary ── */
+  --color-primary:        #1B4FD8;   /* 인디고 블루 — 메인 액션 */
+  --color-primary-light:  #EEF2FF;   /* 인디고 배경 tint */
+  --color-primary-hover:  #1741B6;   /* hover */
+
+  /* ── Semantic ── */
+  --color-income:         #0D7F6C;   /* 수입 · 완료 — 틸 그린 */
+  --color-income-light:   #F0FDFB;
+  --color-expense:        #C53030;   /* 지출 · 위험 — 딥 레드 */
+  --color-expense-light:  #FFF5F5;
+  --color-warning:        #B45309;   /* 경고 · 주의 — 앰버 */
+  --color-warning-light:  #FFFBEB;
+
+  /* ── Neutral ── */
+  --color-bg:             #F4F5F7;   /* 전체 배경 — 따뜻한 오프화이트 */
+  --color-surface:        #FFFFFF;   /* 카드 배경 */
+  --color-border:         #E2E5EB;   /* 구분선 */
+  --color-border-strong:  #CBD0DA;   /* 강조 구분선 */
+
+  /* ── Text ── */
+  --color-text-primary:   #111827;   /* 본문 강조 */
+  --color-text-secondary: #4B5563;   /* 보조 텍스트 */
+  --color-text-muted:     #9CA3AF;   /* 캡션 · 플레이스홀더 */
+  --color-text-disabled:  #D1D5DB;
+
+  /* ── Nav (사이드바 다크) ── */
+  --nav-bg:               #141B2D;   /* 사이드바 배경 */
+  --nav-text:             #8B95A8;   /* 비활성 메뉴 */
+  --nav-text-active:      #FFFFFF;   /* 활성 메뉴 텍스트 */
+  --nav-active-bg:        #1B4FD8;   /* 활성 메뉴 배경 */
+  --nav-hover-bg:         rgba(255,255,255,0.06);
+
+  /* ── Legacy 호환 (기존 컴포넌트 점진적 교체용) ── */
+  --ios-blue:             #1B4FD8;
+  --ios-green:            #0D7F6C;
+  --ios-red:              #C53030;
+  --ios-orange:           #B45309;
+  --ios-yellow:           #D97706;
+  --ios-gray:             #6B7280;
+  --ios-gray2:            #9CA3AF;
+  --ios-gray3:            #D1D5DB;
+  --ios-gray4:            #E2E5EB;
+  --ios-gray5:            #F3F4F6;
+  --ios-gray6:            #F4F5F7;
+  --ios-label:            #111827;
+  --ios-secondary-label:  #4B5563;
+  --ios-bg:               #F4F5F7;
+  --ios-card-bg:          #FFFFFF;
+
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-top:    env(safe-area-inset-top, 0px);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  overscroll-behavior: none;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+@media (min-width: 768px) {
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.12);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.22); }
+}
+
+/* ── Safe area ── */
+.pb-safe {
+  padding-bottom: calc(var(--safe-area-bottom) + 80px);
+}
+.pt-safe {
+  padding-top: calc(var(--safe-area-top) + 0px);
+}
+
+/* ── Card — 그림자 제거, 보더 라인 ── */
+.ios-card {
+  background: var(--color-surface);
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+}
+
+/* ── Primary Button ── */
+.ios-btn-primary {
+  background: var(--color-primary);
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+  height: 50px;
+  width: 100%;
+  font-size: 16px;
+  transition: background 0.15s ease, opacity 0.15s ease;
+  letter-spacing: -0.01em;
+}
+.ios-btn-primary:hover  { background: var(--color-primary-hover); }
+.ios-btn-primary:active { opacity: 0.85; }
+
+/* ── Bottom Nav ── */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--color-border);
+  padding-bottom: var(--safe-area-bottom);
+  z-index: 100;
+}
+
+/* ── PC content area ── */
+@media (min-width: 768px) {
+  .pc-content-area {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+/* ── Input ── */
+.ios-input {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-family: 'Pretendard', sans-serif;
+  width: 100%;
+  outline: none;
+  color: var(--color-text-primary);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.ios-input::placeholder { color: var(--color-text-muted); }
+.ios-input:focus {
+  background: white;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(27,79,216,0.12);
+}
+
+/* ── Badge ── */
+.badge-red {
+  background: var(--color-expense);
+  color: white;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Status / Priority ── */
+.status-unconfirmed { color: var(--color-expense); }
+.status-in-progress { color: var(--color-warning); }
+.status-completed   { color: var(--color-income);  }
+.status-on-hold     { color: var(--color-text-muted); }
+
+.priority-urgent { color: var(--color-expense); }
+.priority-high   { color: var(--color-warning); }
+.priority-normal { color: var(--color-primary); }
+.priority-low    { color: var(--color-text-muted); }
+
+/* ── Divider ── */
+.ios-divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: 0 16px;
+}
+
+/* ── Section header ── */
+.section-header {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 8px 16px 4px;
+}
+
+/* ── Sheet overlay ── */
+.sheet-overlay {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+}
+
+/* ── Animations ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.25s ease forwards;
+}
+
+/* ── Print ── */
+@media print {
+  body > * { display: none !important; }
+  .fixed.inset-0 {
+    display: flex !important;
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  .overflow-y-auto { overflow: visible !important; }
+  @page { margin: 15mm 12mm; }
+}
